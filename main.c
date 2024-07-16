@@ -11,9 +11,21 @@ void example(fruit f, int i) {
     case 3: // Noncompliant; case value not in enum
       // ...
   }
+    
+int f() {
+    int j = 0;
+L1:
+    ++j;
+    if (10 == j) {
+        goto L2;         // forward jump ignored
+    }
+    // ...
+    goto L1;           // Noncompliant
+L2:
+    return ++j;
+}
 
 int main() {
-
   switch (i) { // Noncompliant; no default
     case 0:
     // ...
@@ -21,7 +33,8 @@ int main() {
     // ...
     }
   }
-    
-    printf("Hello, World!\n");
-    return 0;
+  
+  f();
+  printf("Hello, World!\n");
+  return 0;
 }
