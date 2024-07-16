@@ -1,10 +1,19 @@
 #include <stdio.h>
 
-int main() {
-    printf("Hello, World!\n");
-    goto custom_label; // Jump to the custom label
+int f() {
+    int j = 0;
+L1:
+    ++j;
+    if (10 == j) {
+        goto L2;         // forward jump ignored
+    }
+    // ...
+    goto L1;           // Noncompliant
+L2:
+    return ++j;
+}
 
-custom_label:
-    printf("This is a custom label.\n");
+int main() {
+    f();
     return 0;
 }
