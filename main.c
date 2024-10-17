@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int f() {
-    int j = 0;
+    int j = 00;        // some change
 L1:
     ++j;
     if (10 == j) {
@@ -10,7 +10,7 @@ L1:
     // ...
     goto L1;           // Noncompliant
 L2:
-    return ++j;
+    return ++j;        
 }
 
 int main() {
